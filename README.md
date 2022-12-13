@@ -787,11 +787,7 @@ break-word'>
 </body>
 
 </html>
-         &nbsp;&nbsp;&nbsp;&nbsp;Hi everyone, <br />
-         &nbsp;&nbsp;&nbsp;&nbsp;Project 3 is announced. <br />
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;
 
 ============================================================================================= 
 
