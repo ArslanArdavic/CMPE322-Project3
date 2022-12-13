@@ -1,18 +1,33 @@
 
+# Introduction
+
+```diff
+- multi-threaded application
+
+@@	_simulating	@@
+```
 
 
+```diff
++ _payment
 
-<pre>
-</pre>
+! _customers
++ _customers
+! _prepayments
++ _prepayment
 
+```
 
-## Introduction
+```diff
+@@ 	_simultaneously	@@
 
-**In this project you will implement**
+# _ticket_vending_machine_instances
+! _ticket_vending_machines
++ _ticket_vending_machine
+```
 
--  __**multi-threaded application**__  <br/>
-  
----
+<b>In this project you will implement <b><i><ins>multi-threaded application</ins></i></b> </b> <br/>
+ 
 <pre>
 <i>multi-threaded application</i>
 <br/>for <b>_simulating</b> a fun fair <b>_payment</b> <b>_system</b>
@@ -22,6 +37,26 @@
 <br/><i><b>the synchronization and the data consistency</b></i> 
 <br/>should be taken into the consideration throughout the <b>_implementation.</b>
 </pre>
+
+---
+
+# Section 2
+
+_
+
+---
+
+# Section 3
+
+---
+
+# Section 4
+
+---
+
+# Section 5
+
+------
 
 
 
@@ -788,8 +823,9 @@ break-word'>
 
 </html>
 
+-----
 
-============================================================================================= 
+
 
                               DEADLINE is 30 December 2022
                                
@@ -807,7 +843,8 @@ break-word'>
         
         -----         -----         -----         -----         -----         -----        
 
-=============================================================================================                                                       
-
+-----
+<pre>
 See this post in context 
-https://moodle.boun.edu.tr/user/view.php?id=45700&course=54995
+<url>https://moodle.boun.edu.tr/user/view.php?id=45700&course=54995</url>
+</pre>
