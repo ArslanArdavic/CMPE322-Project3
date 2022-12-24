@@ -58,7 +58,8 @@ _
 
 ------
 
-
+# Resources
+- https://opensource.com/article/19/5/how-write-good-c-main-function <br />
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"
 xmlns:o="urn:schemas-microsoft-com:office:office"
