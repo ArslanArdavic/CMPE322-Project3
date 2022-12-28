@@ -1,5 +1,5 @@
 /* TODO: Insert Locking Mechanism*/
-/* TODO: Make Thread Wait*/
+/* TODO: Ready to go!*/
 
 #include <iostream>
 #include <string>
@@ -105,6 +105,12 @@ class Customer {
             _threadID = std::this_thread::get_id();
             ;
         }
+        int getSleepDuration(){     return _sleepDuration;}
+        int getPayFromMachineID(){  return _payFromMachineID;}
+        std::string getPayToCompany(){      return _payToCompany;}
+        int getPayAmount(){         return _payAmount;}
+        int getID(){                return _id;}
+
         void toConsole(){ 
             _threadID = std::this_thread::get_id();
             std::cout << "" <<std::endl << "    " << "CustomerThreadID: "<< _threadID <<std::endl<<"        ";
@@ -230,12 +236,21 @@ void printDetailsOfMachineWithIndex(int i){
 void createNewCustomerThread(int GenerationLoopCounter,int id, int sleepDuration, int payFromMachineID, std::string payToCompany, int payAmount){
     Customer* customer = new Customer(sleepDuration, payFromMachineID, payToCompany, payAmount);
     CUSTOMERS[GenerationLoopCounter] = customer;
-    printDetailsOfCustomerWithIndex(GenerationLoopCounter);
+    //printDetailsOfCustomerWithIndex(GenerationLoopCounter);
+    
+    std::cout << "Customer[" <<customer -> getID()<< "]" << customer -> getSleepDuration() << "ms sleep..."<< std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(customer -> getSleepDuration()));
+    
+    
+    std::cout << "Customer "      << customer -> getID()               <<" Ready!: "
+              << "goToMachineID(" << customer -> getPayFromMachineID() << ") "
+              << "payToCompany("  << customer -> getPayToCompany()     << ") "
+              << "payAmount("     << customer -> getPayAmount()        << ") "
+              << std::endl;
 }
 void printDetailsOfCustomerWithIndex(int i){
     std::thread::id threadID = std::this_thread::get_id();
     std::cout << "printThreadID:"<< threadID <<" customerDetails:";
-
     CUSTOMERS[i] -> toConsole();
 }
 
