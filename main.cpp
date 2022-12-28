@@ -1,4 +1,4 @@
-/* TODO: Insert Locking Mechanism*/
+/* TODO: Implement Output Logs.*/
 
 #include <iostream>
 #include <string>
@@ -219,7 +219,7 @@ int main(){
     Here simulation results are kept, prepayments documented as transactions are made. */
     for(int i=0;i<COMPANYCOUNT;i++)
         COMPANIES[i] -> toConsole();
-        
+
     """                             DebugTools                             """;
     /*  
         """//CutAboveLine//""";
