@@ -129,13 +129,12 @@ class Customer {
         int getID(){                return _id;}
 
         void buyTicket(){           
-
             CRITICALSECTION.lock();
-
-            _status = processing;
-            std::cout << _sleepDuration << "ms slept."<<" Payment process started by Customer["<< _id << "]" 
-                      << "at Machine["<< _payFromMachineID << "]" << std::endl;
-            _status = MACHINES[_payFromMachineID] -> processPayment(_id, _payToCompany, _payAmount);
+            /*Critical Section*/
+                _status = processing;
+                std::cout << _sleepDuration << "ms slept."<<" Payment process started by Customer["<< _id << "]" 
+                          << "at Machine["<< _payFromMachineID << "]" << std::endl;
+                _status = MACHINES[_payFromMachineID] -> processPayment(_id, _payToCompany, _payAmount);
             
             CRITICALSECTION.unlock();
 
@@ -150,19 +149,11 @@ class Customer {
 };Customer* CUSTOMERS[SIZEMAXCUSTOMERS]; 
 
 
-/*  main() function consists of 4 parts:
-.
-.                                1.COMPANIES
-.                                2.MACHINES
-.                                3.CUSTOMERS
-.                                4.TRANSACTIONS     
-.                
-*/
-       
+/*  main() function consists of 4 UPPERCASE fundamental parts.*/       
 int main(){
 
 /*                             main thread                                                                           */
-    //std::thread::id threadID = std::this_thread::get_id();std::cout << "printThreadID: "<< threadID <<" main()\n";
+    /*std::thread::id threadID = std::this_thread::get_id();std::cout << "printThreadID: "<< threadID <<" main()\n"; */
 
 /*                           -- COMPANIES--
     Create 5 different service provider companies and append to array.                          */
@@ -210,7 +201,6 @@ int main(){
     }
  
 /*                           --TRANSACTIONS--                                                                        */
-//"""TODO"""    
 
 /*                            print console                                                                          */    
     for(int i=0;i<COMPANYCOUNT;i++)
@@ -230,7 +220,10 @@ void createNewCustomerThread(int GenerationLoopCounter,int id, int sleepDuration
     
     std::this_thread::sleep_for(std::chrono::milliseconds(customer -> getSleepDuration()));
 
-    customer -> buyTicket();         /*CUT  std::cout << "Customer "<< customer -> getID() <<" Ready!: "<< "goToMachineID(" << customer -> getPayFromMachineID() << ") "<< "payToCompany("  << customer -> getPayToCompany()     << ") "<< "payAmount("     << customer -> getPayAmount()        << ") "<< std::endl;
+    customer -> buyTicket();         /*CUT  std::cout << "Customer "      << customer -> getID()               <<" Ready!:" 
+                                                      << "goToMachineID(" << customer -> getPayFromMachineID() << ") "
+                                                      << "payToCompany("  << customer -> getPayToCompany()     << ") "
+                                                      << "payAmount("     << customer -> getPayAmount()        << ") "<< std::endl;
                                     CUT*/
 }
 void printDetailsOfCustomerWithIndex(int i){
