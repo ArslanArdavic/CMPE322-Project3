@@ -18,7 +18,7 @@ static int customersCreated=0;
 void createNewMachine(int GenerationLoopCounter);
 void printDetailsOfMachineWithIndex(int i);
 
-void createNewCustomer(int GenerationLoopCounter, int id, int sleepDuration, int payFromMachineID, std::string payToCompany, int payAmount);
+void createNewCustomerThread(int GenerationLoopCounter, int id, int sleepDuration, int payFromMachineID, std::string payToCompany, int payAmount);
 void printDetailsOfCustomerWithIndex(int i);
 
 std::vector<std::string> parseStringToArray(std::string s);
@@ -46,6 +46,7 @@ class Company {
 class VendingMachine {
     private:
         int _id;
+        std::thread::id _threadID;
         int _transactionCount;
         int _requestCount;
         bool _available=true;
@@ -54,17 +55,39 @@ class VendingMachine {
     public:
         VendingMachine(int id){
             _id = id;
+            _threadID = std::this_thread::get_id();
+
             _transactionCount = 0;
             _requestCount = 0;
+
         };
-        void toConsole(){   std::cout <<"Vending Machine " << _id << " | " << "Requests = " << _requestCount << ", Transactions = " <<  _transactionCount <<", status="<< _available << std::endl;}
-        void processPayment(){                                                                                _transactionCount++;}
-        bool isAvailable(){                                                                                   return  _available;}
-        void request(bool available){                                                   _requestCount+=1;   _available=available;}
+        void toConsole(){   
+            _threadID = std::this_thread::get_id();
+            std::cout << "" <<std::endl << "    " << "MachineThreadID: "<< _threadID <<std::endl<<"        ";
+            std::cout <<"Vending Machine " << _id << " | " << "Requests = " << _requestCount << ", Transactions = " <<  _transactionCount <<", status="<< _available << std::endl;
+        }
+        int processPayment(){                                                                                
+            /*                                                                 TODO                                                                 */
+
+            return _transactionCount++;
+            }
+        bool isAvailable(){
+            /*                                                                 TODO                                                                 */
+                                                                                               
+            return  _available;
+        }
+        bool request(bool available){    
+            /*                                                                 TODO                                                                 */
+
+            _requestCount+=1;   
+            return _available;
+        }
 };
 class Customer {
     private:
         int _id;
+        std::thread::id _threadID;
+
         int _sleepDuration;
         int _payFromMachineID;
         std::string _payToCompany;   
@@ -79,8 +102,15 @@ class Customer {
             _payToCompany = payToCompany;
             _payAmount = payAmount;
             status = ready;
+            _threadID = std::this_thread::get_id();
+            ;
         }
-        void toConsole(){ std::cout << "Customer " << _id  << ": [" << _sleepDuration << ","<< _payFromMachineID << ","<< _payToCompany << ","<< _payAmount << ","<< "status="<< status << "]"<< std::endl;}
+        void toConsole(){ 
+            _threadID = std::this_thread::get_id();
+            std::cout << "" <<std::endl << "    " << "CustomerThreadID: "<< _threadID <<std::endl<<"        ";
+            std::cout << "Customer " << _id  << ": [" << _sleepDuration << ","<< _payFromMachineID << 
+                                                   ","<< _payToCompany  << ","<< _payAmount        << ","<< "status="<< status << "]"<< std::endl;
+            }
 };
 class Transaction {
     private:
@@ -129,11 +159,14 @@ int main(){
     Create 10 different service provider vending machines and append to array.                  */
     std::vector<std::thread> threadsOfMachines;                                                                    //  THREADS processing machine affaires.
 
-    for(int i=0;i<10;i++){
+    for(int i=0;i<MACHINECOUNT;i++){
         // Create new thread and append to array.
         threadsOfMachines.push_back(std::thread(createNewMachine, i));
     }
-    for (auto &th : threadsOfMachines){th.join();}   
+    for(int j=0;j<MACHINECOUNT;j++){
+        threadsOfMachines[j].join();
+    }
+    //for (std::thread &th : threadsOfMachines){th.join();}   
 
     /*                           --CUSTOMERS--
     Create CUSTOMERCOUNT many Customer object instances as specified in the input file 
@@ -153,13 +186,14 @@ int main(){
         std::string payToCompany = lineArray[2]; int payAmount=std::stoi(lineArray[3]);//                                       | payToCompany|payAmount       |
 
         // Create new thread and append to array.
-        threadsOfCustomers.push_back(std::thread(createNewCustomer, i,0, sleepDuration, payFromMachineID, payToCompany, payAmount));
+        threadsOfCustomers.push_back(std::thread(createNewCustomerThread, i,0, sleepDuration, payFromMachineID, payToCompany, payAmount));
     };
 
-    for (auto &th : threadsOfCustomers) 
-        th.join();     
-
-    /*                           --TRANSACTIONS--
+    for(int j=0;j<CUSTOMERCOUNT;j++){
+        threadsOfCustomers[j].join();  
+    }
+ 
+/*                           --TRANSACTIONS--
     Here simulation runs, prepayments documented as transactions are made. */
     
 
@@ -193,17 +227,18 @@ void printDetailsOfMachineWithIndex(int i){
     MACHINES[i] -> toConsole();
 }
 
-void createNewCustomer(int GenerationLoopCounter,int id, int sleepDuration, int payFromMachineID, std::string payToCompany, int payAmount){
+void createNewCustomerThread(int GenerationLoopCounter,int id, int sleepDuration, int payFromMachineID, std::string payToCompany, int payAmount){
     Customer* customer = new Customer(sleepDuration, payFromMachineID, payToCompany, payAmount);
     CUSTOMERS[GenerationLoopCounter] = customer;
     printDetailsOfCustomerWithIndex(GenerationLoopCounter);
 }
-
 void printDetailsOfCustomerWithIndex(int i){
     std::thread::id threadID = std::this_thread::get_id();
     std::cout << "printThreadID: "<< threadID <<" customerDetails: ";
     CUSTOMERS[i] -> toConsole();
 }
+
+
 
 std::vector<std::string> parseStringToArray(std::string s){
     std::vector<std::string> v(4);
