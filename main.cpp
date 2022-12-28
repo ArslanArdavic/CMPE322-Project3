@@ -77,7 +77,7 @@ class Transaction{
             _requestedFromCustomerID = requestedFromCustomerID;
         }
         void toConsole(){ std::cout<<"Transaction "<< _id << " | " << "ByMachine:" << _issuedByMachineID << " , ByCompany:" << _issuedByCompanyName << " , Customer:" <<_requestedFromCustomerID << std::endl ;}
-}
+};
 
 
 
