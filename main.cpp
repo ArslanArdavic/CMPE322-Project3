@@ -215,11 +215,10 @@ void createNewMachine(int GenerationLoopCounter){
     //printDetailsOfMachineWithIndex(GenerationLoopCounter);
 }
 void createNewCustomerThread(int GenerationLoopCounter,int id, int sleepDuration, int payFromMachineID, std::string payToCompany, int payAmount){
+    
     Customer* customer = new Customer(sleepDuration, payFromMachineID, payToCompany, payAmount);
     CUSTOMERS[GenerationLoopCounter] = customer;//printDetailsOfCustomerWithIndex(GenerationLoopCounter);
-    
     std::this_thread::sleep_for(std::chrono::milliseconds(customer -> getSleepDuration()));
-
     customer -> buyTicket();         /*CUT  std::cout << "Customer "      << customer -> getID()               <<" Ready!:" 
                                                       << "goToMachineID(" << customer -> getPayFromMachineID() << ") "
                                                       << "payToCompany("  << customer -> getPayToCompany()     << ") "
