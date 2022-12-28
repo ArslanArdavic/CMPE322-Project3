@@ -96,15 +96,7 @@ class VendingMachine {
             ++_transactionCount;
             return done;
             }
-        bool isAvailable(){
-            /*                                                                 TODO                                                                 */                                                                               
-            return  _available;
-        }
-        bool request(bool available){    
-            /*                                                                 TODO                                                                 */
-            _requestCount+=1;   
-            return isAvailable();
-        }
+
 };VendingMachine* MACHINES[MACHINECOUNT];
 
 class Customer {
@@ -140,6 +132,7 @@ class Customer {
 
             CRITICALSECTION.lock();
 
+            _status = processing;
             std::cout << _sleepDuration << "ms slept."<<" Payment process started by Customer["<< _id << "]" 
                       << "at Machine["<< _payFromMachineID << "]" << std::endl;
             _status = MACHINES[_payFromMachineID] -> processPayment(_id, _payToCompany, _payAmount);
@@ -168,7 +161,8 @@ class Customer {
        
 int main(){
 
-/*                             main thread                                                                           *///std::thread::id threadID = std::this_thread::get_id();std::cout << "printThreadID: "<< threadID <<" main()\n";
+/*                             main thread                                                                           */
+    //std::thread::id threadID = std::this_thread::get_id();std::cout << "printThreadID: "<< threadID <<" main()\n";
 
 /*                           -- COMPANIES--
     Create 5 different service provider companies and append to array.                          */
@@ -215,24 +209,13 @@ int main(){
         threadsOfCustomers[j].join();  
     }
  
-/*                           --TRANSACTIONS--
-    Here simulation results are kept, prepayments documented as transactions are made. */
+/*                           --TRANSACTIONS--                                                                        */
+//"""TODO"""    
+
+/*                            print console                                                                          */    
     for(int i=0;i<COMPANYCOUNT;i++)
         COMPANIES[i] -> toConsole();
-
-    """                             DebugTools                             """;
-    /*  
-        """//CutAboveLine//""";
-            
-        for(int i=0;i<COMPANYCOUNT;i++)
-            COMPANIES[i] -> toConsole();
-
-        for(int i=0;i<MACHINECOUNT;i++)
-            MACHINES[i]-> toConsole();
-
-        for(int i=0;i<CUSTOMERCOUNT;i++)
-            CUSTOMERS[i] -> toConsole();
-        */
+        
     return 0;
 }
 
@@ -283,8 +266,22 @@ banks hashit (std::string const& inString) {
     else if (inString == "Stuart") return stuart;
     return null;
 };
- /*  void join();
+/*  void join();
     .    The function returns when the thread execution has completed.
     .        This synchronizes the moment this function returns with the completion of all the operations in the thread: 
     .        This blocks the execution of the thread that calls this function, 
     .        until the function called on construction returns (if it hasn't yet).                                    */                                        
+
+//"""                             DebugTools                             """;
+    /*  
+        """//CutAboveLine//""";
+            
+        for(int i=0;i<COMPANYCOUNT;i++)
+            COMPANIES[i] -> toConsole();
+
+        for(int i=0;i<MACHINECOUNT;i++)
+            MACHINES[i]-> toConsole();
+
+        for(int i=0;i<CUSTOMERCOUNT;i++)
+            CUSTOMERS[i] -> toConsole();
+        */
