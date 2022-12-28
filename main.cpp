@@ -234,7 +234,8 @@ void createNewCustomerThread(int GenerationLoopCounter,int id, int sleepDuration
 }
 void printDetailsOfCustomerWithIndex(int i){
     std::thread::id threadID = std::this_thread::get_id();
-    std::cout << "printThreadID: "<< threadID <<" customerDetails: ";
+    std::cout << "printThreadID:"<< threadID <<" customerDetails:";
+
     CUSTOMERS[i] -> toConsole();
 }
 
