@@ -11,7 +11,7 @@
 #define COMPANYCOUNT     5
 #define MACHINECOUNT     10
 
-int        CUSTOMERCOUNT;      // Value to be specified from input file.                                
+int        CUSTOMERCOUNT;                                      
 enum       customerStatus{sleeping, ready, done};
 static int customersCreated=0;
 
