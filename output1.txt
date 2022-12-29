@@ -1,0 +1,20 @@
+[vtm3]: Customer1,40TL,Dave
+[vtm2]: Customer3,300TL,Kevin
+[vtm8]: Customer6,231TL,Bob
+[vtm0]: Customer5,231TL,Bob
+[vtm9]: Customer7,100TL,Bob
+[vtm0]: Customer8,300TL,Kevin
+[vtm8]: Customer9,100TL,Bob
+[vtm8]: Customer11,30TL,Otto
+[vtm8]: Customer12,30TL,Otto
+[vtm3]: Customer14,40TL,Dave
+[vtm1]: Customer2,50TL,Stuart
+[vtm7]: Customer10,65TL,Stuart
+[vtm1]: Customer4,50TL,Stuart
+[vtm7]: Customer13,65TL,Stuart
+[Main]: All payments are completed
+[Main]: Kevin: 600
+[Main]: Bob: 662
+[Main]: Stuart: 230
+[Main]: Otto: 60
+[Main]: Dave: 80

@@ -1,0 +1,62 @@
+[vtm0]: Customer19,2TL,Stuart
+[vtm0]: Customer20,2TL,Dave
+[vtm2]: Customer38,1TL,Kevin
+[vtm1]: Customer1,3TL,Bob
+[vtm0]: Customer26,2TL,Bob
+[vtm2]: Customer39,1TL,Bob
+[vtm0]: Customer22,2TL,Bob
+[vtm2]: Customer37,1TL,Bob
+[vtm2]: Customer40,1TL,Dave
+[vtm0]: Customer23,2TL,Bob
+[vtm2]: Customer41,1TL,Stuart
+[vtm2]: Customer42,1TL,Stuart
+[vtm0]: Customer24,2TL,Stuart
+[vtm0]: Customer25,2TL,Bob
+[vtm0]: Customer27,2TL,Stuart
+[vtm0]: Customer28,2TL,Stuart
+[vtm0]: Customer29,2TL,Dave
+[vtm1]: Customer2,3TL,Kevin
+[vtm2]: Customer43,1TL,Kevin
+[vtm0]: Customer21,2TL,Kevin
+[vtm0]: Customer30,2TL,Bob
+[vtm2]: Customer44,1TL,Bob
+[vtm1]: Customer4,3TL,Dave
+[vtm0]: Customer31,2TL,Dave
+[vtm2]: Customer45,1TL,Dave
+[vtm2]: Customer46,1TL,Otto
+[vtm2]: Customer47,1TL,Dave
+[vtm0]: Customer32,2TL,Bob
+[vtm2]: Customer48,1TL,Dave
+[vtm2]: Customer49,1TL,Stuart
+[vtm0]: Customer33,2TL,Dave
+[vtm0]: Customer34,2TL,Bob
+[vtm0]: Customer35,2TL,Bob
+[vtm0]: Customer36,2TL,Stuart
+[vtm1]: Customer3,3TL,Kevin
+[vtm2]: Customer50,1TL,Kevin
+[vtm2]: Customer51,1TL,Dave
+[vtm1]: Customer5,3TL,Stuart
+[vtm2]: Customer52,1TL,Stuart
+[vtm2]: Customer53,1TL,Kevin
+[vtm2]: Customer54,1TL,Dave
+[vtm2]: Customer55,1TL,Dave
+[vtm2]: Customer56,1TL,Dave
+[vtm1]: Customer7,3TL,Bob
+[vtm1]: Customer6,3TL,Bob
+[vtm1]: Customer8,3TL,Stuart
+[vtm1]: Customer9,3TL,Stuart
+[vtm1]: Customer10,3TL,Kevin
+[vtm1]: Customer11,3TL,Bob
+[vtm1]: Customer12,3TL,Kevin
+[vtm1]: Customer13,3TL,Dave
+[vtm1]: Customer14,3TL,Bob
+[vtm1]: Customer15,3TL,Stuart
+[vtm1]: Customer16,3TL,Kevin
+[vtm1]: Customer17,3TL,Bob
+[vtm1]: Customer18,3TL,Kevin
+[Main]: All payments are completed
+[Main]: Kevin: 24
+[Main]: Bob: 37
+[Main]: Stuart: 26
+[Main]: Otto: 1
+[Main]: Dave: 22
